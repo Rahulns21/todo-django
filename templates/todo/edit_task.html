@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Edit task{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <h3 class="pt-5 pb-5 text-center">Django ToDo App - Edit task</h3>
+    <form action="{% url "todo:edit-task" get_task.slug %}" method="POST" style="width: 500px; margin: auto;">
+        {% csrf_token %}
+        <div class="form-group">
+            <span style="display: flex;" class="gap-3">
+                <input type="text" name="edit_task" class="form-control" placeholder="Add a task" style="padding: 1rem .75rem !important;" value="{{ get_task.task }}" required>
+                <button class="btn btn-primary" style="width: 200px;"><i class="fa fa-plus"></i> Update</button>
+            </span>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
